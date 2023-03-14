@@ -15,21 +15,21 @@ Pages are components which has a route to access.
 
 #### `LoginComponent`
 
-# | Details
---- | --- 
-Description | Takes `username` from users and gets navigates to `UserDashboardComponent`
-Route | /login 
-Services | None
-Test cases | None
+| #     | Details      |
+| :------------ |   :---      |
+| Description        | Takes `username` from users and gets navigates to `UserDashboardComponent`components.         |
+| Route         | /login           |
+| Services        | None         |
+| Test cases         | None         |
 
 #### `UserDashboardComponent`
 
-# | Details
---- | --- 
-Description | Gets `username` available in route params and calls the `getUserMetaData` to get the user details. Passes user details to its child components.
-Route | /dashboard/:username 
-Services | GithubService, MessageService
-Test cases | None
+| #     | Details      |
+| :------------ |   :---      |
+| Description        | Gets `username` available in route params and calls the `getUserMetaData` to get the user details. Passes user details to its child components.         |
+| Route         | /dashboard/:username          |
+| Services        | GithubService, MessageService         |
+| Test cases         | None         |
 
 ### Sub-Pages
 
@@ -37,28 +37,29 @@ Sub-pages are components which is not a page neither a reusable. Components whic
 
 #### `AppComponent`
 
-# | Details
---- | --- 
-Description | Controls the route and it is the bootstrapping component(default). Initializes the `octokit` instance.
-Services | GithubService
-Test cases | None 
+| #     | Details      |
+| :------------ |   :---      |
+| Description        | Controls the route and it is the bootstrapping component(default). Initializes the `octokit` instance.         |
+| Services         | GithubService         |
+| Test cases         | None         |
 
 #### `RepoListComponent`
 
-# | Details
---- | --- 
-Description | Get all repositories for a given `username`. Supports pagination and serach functionalities. Iterates all repositories and pass each repository to its child.
-Inputs | username, userMetadata 
-Services | GithubService, MessageService
-Test cases | None
+| #     | Details      |
+| :------------ |   :---      |
+| Description        | Get all repositories for a given `username`. Supports pagination and serach functionalities. Iterates all repositories and pass each repository to its child.         |
+| Inputs         | username, userMetadata          |
+| Services         | GithubService, MessageService         |
+| Test cases         | None         |
 
 #### `UserDetailsComponent`
 
-# | Details
---- | --- 
-Description | Get the `userMetaData` from `UserDashbaordComponent` to render all user meta data's.
-Inputs | userMetadata 
-Test cases | None
+| #     | Details      |
+| :------------ |   :---      |
+| Description        | Get the `userMetaData` from `UserDashbaordComponent` to render all user meta data's.         |
+| Inputs         | username         |
+| Services         | None         |
+| Test cases         | None         |
 
 ### Reusables
 
@@ -66,11 +67,12 @@ Reusables are components which are used in multiple places.
 
 #### `RepoCardComponent`
 
-# | Details
---- | --- 
-Description | Gets `repo` from `RepoListComponent` to render all the repository meta data's.
-Inputs | repo 
-Test cases | None
+| #     | Details      |
+| :------------ |   :---      |
+| Description        | Gets `repo` from `RepoListComponent` to render all the repository meta data's.         |
+| Inputs         | repo         |
+| Services         | None         |
+| Test cases         | None         |
 
 
 ## Setup
