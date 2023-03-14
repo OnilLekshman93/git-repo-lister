@@ -1,0 +1,17 @@
+<p-card header="{{repo.name}}" *ngIf="repo">
+    <p>{{ repo.description }}</p>
+        <ng-template pTemplate="footer">
+            <div class="flex flex-wrap" *ngIf="repo.topics.length">
+                <ng-container *ngFor="let topic of repo.topics">
+                    <p-tag styleClass="mr-2" severity="info" value="{{topic}}"></p-tag>
+                </ng-container>
+            </div>
+        </ng-template>
+</p-card>
+<div class="custom-skeleton p-4" *ngIf="!repo">
+    <p-skeleton width="100%" height="150px"></p-skeleton>
+    <div class="flex mt-3">
+        <p-skeleton width="4rem" height="2rem"></p-skeleton>
+        <p-skeleton width="4rem" height="2rem" styleClass="ml-2"></p-skeleton>
+    </div>
+</div>

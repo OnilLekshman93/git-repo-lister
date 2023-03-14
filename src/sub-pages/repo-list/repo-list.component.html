@@ -1,0 +1,18 @@
+<div class="w-full mt-3">
+    <span class="p-input-icon-right" *ngIf="userRepoListFetched">
+        <i class="pi pi-search"></i>
+        <input class="w-full" placeholder="Search repositories" type="text" pInputText [formControl]="searchControl" >        
+    </span> 
+    <p-skeleton height="2rem" width="15rem" styleClass="mb-2" *ngIf="!userRepoListFetched"></p-skeleton>
+    <div class="grid mt-3">
+        <ng-container *ngFor="let repo of userRepoList;let index = index;trackBy:trackRepo">
+            <div class="col-4">
+                <git-repo-card [repo]="repo"></git-repo-card>
+            </div>
+        </ng-container>
+    </div>
+    <ng-container *ngIf="repoCount">
+        <p-paginator *ngIf="userRepoListFetched" [rows]="pageSize" [totalRecords]="repoCount" [rowsPerPageOptions]="rowsPerPageOptions" (onPageChange)="onPaginate($event)"></p-paginator>
+        <p-skeleton *ngIf="!userRepoListFetched" height="2rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>    
+    </ng-container>
+</div>
