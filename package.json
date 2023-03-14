@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href /github-list/ --deploy-url /github-list/",
-    "dev-build": "ng build --base-href /github-list/ --deploy-url /github-list/ --configuration development",
-    "watch": "ng build --watch --base-href /github-list/ --deploy-url /github-list/ --configuration development",
+    "build": "ng build --base-href /git-repo-lister/ --deploy-url /git-repo-lister/",
+    "dev-build": "ng build --base-href /git-repo-lister/ --deploy-url /git-repo-lister/ --configuration development",
+    "watch": "ng build --watch --base-href /git-repo-lister/ --deploy-url /git-repo-lister/ --configuration development",
     "test": "ng test --code-coverage"
   },
   "private": true,
