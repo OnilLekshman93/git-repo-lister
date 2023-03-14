@@ -7,36 +7,39 @@ import { GithubService } from 'src/services/github.service';
 @Component({
   selector: 'git-user-dashboard',
   templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.scss']
+  styleUrls: ['./user-dashboard.component.scss'],
 })
 export class UserDashboardComponent {
-
-  public username:string | null = null;
-  public userMetadata:GitHubUser|null = null;
+  public username: string | null = null;
+  public userMetadata: GitHubUser | null = null;
 
   constructor(
-    private router:Router, 
+    private router: Router,
     private route: ActivatedRoute,
-    private githubService:GithubService,
+    private githubService: GithubService,
     private messageService: MessageService
-  ){}
+  ) {}
 
   ngOnInit(): void {
     this.username = this.route.snapshot.paramMap.get('username');
-    if(this.username){
-      this.getUserMetadata();
+    if (this.username) {
+      this.getUser();
     }
   }
 
-  private getUserMetadata():void{
+  private getUser(): void {
     this.githubService.getUserMetaData(this.username as string).subscribe({
-        next: ((res: {data:GitHubUser}) =>  {
-            this.userMetadata = res.data;
-        }),
-        error: () => {
-          this.messageService.add({severity:'error', summary: 'Error', detail: 'Unable to fetch the user'});
-          this.router.navigate(['/login'])
-        }
-    })
+      next: (res: GitHubUser) => {
+        this.userMetadata = res;
+      },
+      error: () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Unable to fetch the user',
+        });
+        this.router.navigate(['/login']);
+      },
+    });
   }
 }

@@ -4,11 +4,10 @@ import { GitHubUser } from 'src/models/github-api';
 @Component({
   selector: 'git-user-details',
   templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  styleUrls: ['./user-details.component.scss'],
 })
 export class UserDetailsComponent {
+  @Input() userMetadata: GitHubUser | null = null;
 
-  @Input() userMetadata:GitHubUser|null = null;
-  
-  constructor(){}
+  constructor() {}
 }

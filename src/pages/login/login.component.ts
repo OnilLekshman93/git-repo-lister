@@ -5,16 +5,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'git-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  public usernameFormControl: FormControl = new FormControl('');
 
-  public usernameFormControl:FormControl = new FormControl('');
+  constructor(private router: Router) {}
 
-  constructor(private router:Router){}
-
-  public getUserDetails():void{
-      const enteredUsername = this.usernameFormControl.value ?? this.usernameFormControl.value.trim();
-      this.router.navigate(['/dashboard',enteredUsername]);
+  public navigateToDashboard(): void {
+    const enteredUsername = this.usernameFormControl.value.trim();
+    this.router.navigate(['/dashboard', enteredUsername]);
   }
 }

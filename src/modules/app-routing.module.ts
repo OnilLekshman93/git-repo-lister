@@ -7,11 +7,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard/:username', component: UserDashboardComponent },
-  { path: '**', redirectTo: '404' }
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,  { useHash: true })],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

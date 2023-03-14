@@ -39,8 +39,8 @@ Sub-pages are components which is not a page neither a reusable. Components whic
 
 # | Details
 --- | --- 
-Description | Controls the route and it is the bootstrapping component(default). Initializes the `octokit` instance.
-Services | GithubService
+Description | Controls the route and it is the bootstrapping component(default).
+Services | None
 Test cases | None 
 
 #### `RepoListComponent`
@@ -89,5 +89,5 @@ Run `npm run build` to build the project in production configuration.
 
 ### Running unit tests
 
-Run `npm run test` to execute the unit tests
+Run `npm run test` to execute the unit tests. Code coverage for the unit tests will get generated in  `coverage/github-repo-lister` directory
 

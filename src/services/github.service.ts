@@ -1,46 +1,52 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
-import { Octokit } from "octokit";
-import { GitHubRepo, GitHubUser, GitRepoSearchResponse } from 'src/models/github-api';
-import { GetUserRepoParams, SearchUserRepoParams } from 'src/models/utils';
+import { Observable } from 'rxjs';
+import {
+  GitHubRepo,
+  GitHubUser,
+  GitRepoSearchResponse,
+} from 'src/models/github-api';
+import { GetUserRepoParams, SearchUserRepoParams } from 'src/models/requests';
+import { GITHUB_TOKEN } from 'src/constants';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class GithubService {
+  baseUrl: string = 'https://api.github.com/';
 
-  octokit:Octokit = new Octokit({});
+  requestHeaders: {
+    [header: string]: string | string[];
+  } = {
+    accept: 'application/vnd.github.v3+json',
+    authorization: `token ${GITHUB_TOKEN}`,
+  };
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public initializeOctokit(token:string):void{
-    this.octokit = new Octokit({
-      auth: token
-    });
+  public getUserMetaData(username: string): Observable<GitHubUser> {
+    return this.http.get(this.baseUrl + 'users/' + username, {
+      headers: this.requestHeaders,
+    }) as Observable<GitHubUser>;
   }
 
-  public getUserMetaData(username:string):Observable<{data:GitHubUser}>{
-    return from(
-      this.octokit.request("GET /users/{owner}", {
-        owner: username
-      })
-    ) as Observable<{data:GitHubUser}>
+  public getUserRepos(params: GetUserRepoParams): Observable<GitHubRepo[]> {
+    return this.http.get(
+      `${this.baseUrl}users/${params.username}/repos?per_page=${params.pageSize}&page=${params.pageNumber}`,
+      {
+        headers: this.requestHeaders,
+      }
+    ) as Observable<GitHubRepo[]>;
   }
 
-  public getUserRepos(params:GetUserRepoParams):Observable<{data:GitHubRepo[]}>{
-    return from(
-      this.octokit.request('GET /users/{username}/repos', {
-        username: params.username,
-        per_page:params.pageSize,
-        page:params.pageNumber
-      })
-    ) as Observable<any>
-  }
-
-  public searchUserRepos(params:SearchUserRepoParams):Observable<GitRepoSearchResponse>{
-    const encode = encodeURIComponent(`${params.query} in:name,description user:${params.username}`)
-    return this.http.get(`https://api.github.com/search/repositories?q=${encode}&per_page=${params.pageSize}&page=${params.pageNumber}`) as Observable<GitRepoSearchResponse>
+  public searchUserRepos(
+    params: SearchUserRepoParams
+  ): Observable<GitRepoSearchResponse> {
+    const encode = encodeURIComponent(
+      `${params.query} in:name,description user:${params.username}`
+    );
+    return this.http.get(
+      `https://api.github.com/search/repositories?q=${encode}&per_page=${params.pageSize}&page=${params.pageNumber}`
+    ) as Observable<GitRepoSearchResponse>;
   }
 }

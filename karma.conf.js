@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/github-repo-list'),
+      dir: require('path').join(__dirname, './coverage/github-repo-lister'),
       subdir: '.',
       reporters: [
         { type: 'html' },

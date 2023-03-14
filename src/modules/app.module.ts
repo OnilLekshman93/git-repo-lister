@@ -20,7 +20,7 @@ import { UserDetailsComponent } from 'src/sub-pages/user-details/user-details.co
     UserDashboardComponent,
     RepoCardComponent,
     RepoListComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +31,6 @@ import { UserDetailsComponent } from 'src/sub-pages/user-details/user-details.co
     ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

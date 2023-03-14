@@ -1,0 +1,38 @@
+import { GitHubUser } from 'src/models/github-api';
+
+export const User: GitHubUser = {
+  login: 'primefaces',
+  id: 3494069,
+  node_id: 'MDEyOk9yZ2FuaXphdGlvbjM0OTQwNjk=',
+  avatar_url: 'https://avatars.githubusercontent.com/u/3494069?v=4',
+  gravatar_id: '',
+  url: 'https://api.github.com/users/primefaces',
+  html_url: 'https://github.com/primefaces',
+  followers_url: 'https://api.github.com/users/primefaces/followers',
+  following_url:
+    'https://api.github.com/users/primefaces/following{/other_user}',
+  gists_url: 'https://api.github.com/users/primefaces/gists{/gist_id}',
+  starred_url: 'https://api.github.com/users/primefaces/starred{/owner}{/repo}',
+  subscriptions_url: 'https://api.github.com/users/primefaces/subscriptions',
+  organizations_url: 'https://api.github.com/users/primefaces/orgs',
+  repos_url: 'https://api.github.com/users/primefaces/repos',
+  events_url: 'https://api.github.com/users/primefaces/events{/privacy}',
+  received_events_url:
+    'https://api.github.com/users/primefaces/received_events',
+  type: 'Organization',
+  site_admin: false,
+  name: 'PrimeTek',
+  company: null,
+  blog: 'https://www.primefaces.org',
+  location: 'Turkey',
+  email: 'contact@primetek.com.tr',
+  hireable: null,
+  bio: null,
+  twitter_username: 'primefaces',
+  public_repos: 39,
+  public_gists: 0,
+  followers: 332,
+  following: 0,
+  created_at: '2013-02-06T17:54:25Z',
+  updated_at: '2023-03-09T16:32:20Z',
+};
