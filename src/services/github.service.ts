@@ -7,7 +7,7 @@ import {
   GitRepoSearchResponse,
 } from 'src/models/github-api';
 import { GetUserRepoParams, SearchUserRepoParams } from 'src/models/requests';
-import { GITHUB_TOKEN } from 'src/constants';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class GithubService {
     [header: string]: string | string[];
   } = {
     accept: 'application/vnd.github.v3+json',
-    authorization: `token ${GITHUB_TOKEN}`,
+    authorization: `token ${environment.GITHUB_TOKEN}`,
   };
 
   constructor(private http: HttpClient) {}
