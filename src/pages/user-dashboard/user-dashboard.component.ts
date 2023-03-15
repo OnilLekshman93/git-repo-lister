@@ -38,7 +38,9 @@ export class UserDashboardComponent {
           summary: 'Error',
           detail: 'Unable to fetch the user',
         });
-        this.router.navigate(['/login']);
+        setTimeout(()=>{
+          this.router.navigate(['/login']);
+        },1000)
       },
     });
   }

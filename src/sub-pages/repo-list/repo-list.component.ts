@@ -127,7 +127,9 @@ export class RepoListComponent implements OnInit {
       summary: 'Error',
       detail: 'Unable to fetch the user repositories',
     });
-    this.router.navigate(['/login']);
+    setTimeout(()=>{
+      this.router.navigate(['/login']);
+    },1000)
   }
 
   public trackRepo(index: number, repo: GitHubRepo | null): number | null {

@@ -1,27 +1,32 @@
 <div class="w-full mt-3">
   <div class="flex align-items-center">
-    <span class="p-input-icon-right">
-      <i class="pi pi-search"></i>
-      <input
-        class="w-full"
-        [(ngModel)]="searchText"
-        placeholder="Search repositories"
-        type="text"
-        pInputText
-      />
-    </span>
-    <p-button
-      icon="pi pi-search"
-      class="ml-1"
-      [disabled]="!userRepoListFetched"
-      (onClick)="onSearch()"
-    ></p-button>
-    <p-button
-      icon="pi pi-times-circle"
-      class="ml-1"
-      [disabled]="!userRepoListFetched"
-      (onClick)="onSearchClear()"
-    ></p-button>
+    <ng-container  *ngIf="!userRepoListFetched">
+      <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
+      <p-skeleton size="2rem" styleClass="m1-1"></p-skeleton>
+      <p-skeleton size="2rem" styleClass="m1-1"></p-skeleton>
+    </ng-container>
+    <ng-container  *ngIf="userRepoListFetched && repoCount > 0">
+      <span class="p-input-icon-right">
+        <i class="pi pi-search"></i>
+        <input
+          class="w-full"
+          [(ngModel)]="searchText"
+          placeholder="Search repositories"
+          type="text"
+          pInputText
+        />
+      </span>
+      <p-button
+        icon="pi pi-search"
+        class="ml-1"
+        (onClick)="onSearch()"
+      ></p-button>
+      <p-button
+        icon="pi pi-times-circle"
+        class="ml-1"
+        (onClick)="onSearchClear()"
+      ></p-button>
+    </ng-container>
   </div>
   <div class="grid mt-3">
     <ng-container
@@ -31,20 +36,21 @@
         <git-repo-card [repo]="repo"></git-repo-card>
       </div>
     </ng-container>
+    <ng-container *ngIf="userRepoListFetched && repoCount == 0">
+      <div>No public repositories found</div>
+    </ng-container>
   </div>
-  <ng-container *ngIf="repoCount">
-    <p-paginator
-      *ngIf="userRepoListFetched"
-      [rows]="pageSize"
-      [totalRecords]="repoCount"
-      [rowsPerPageOptions]="rowsPerPageOptions"
-      (onPageChange)="onPaginate($event)"
-    ></p-paginator>
-    <p-skeleton
-      *ngIf="!userRepoListFetched"
-      height="2rem"
-      styleClass="mb-2"
-      borderRadius="16px"
-    ></p-skeleton>
-  </ng-container>
+  <p-paginator
+    *ngIf="userRepoListFetched && repoCount>0"
+    [rows]="pageSize"
+    [totalRecords]="repoCount"
+    [rowsPerPageOptions]="rowsPerPageOptions"
+    (onPageChange)="onPaginate($event)"
+  ></p-paginator>
+  <p-skeleton
+    *ngIf="!userRepoListFetched"
+    height="2rem"
+    styleClass="mb-2"
+    borderRadius="16px"
+  ></p-skeleton>
 </div>

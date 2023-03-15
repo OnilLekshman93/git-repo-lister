@@ -64,7 +64,10 @@ describe('UserDashboardComponent', () => {
     const navigateSpy = spyOn(routerstub, 'navigate');
     component.username = 'primefaces';
     fixture.detectChanges();
+    jasmine.clock().install();
     component['getUser']();
+    jasmine.clock().tick(1000);
     expect(navigateSpy).toHaveBeenCalled();
+    jasmine.clock().uninstall();
   });
 });

@@ -154,8 +154,11 @@ describe('RepoListComponent', () => {
     mockMessageService.add.and.returnValue();
     const routerstub: Router = TestBed.inject(Router);
     const navigateSpy = spyOn(routerstub, 'navigate');
+    jasmine.clock().install();
     component['onError']();
+    jasmine.clock().tick(1000);
     expect(navigateSpy).toHaveBeenCalled();
+    jasmine.clock().uninstall();
   });
 
   it('check for search value', () => {
