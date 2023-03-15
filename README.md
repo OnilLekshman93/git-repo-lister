@@ -7,7 +7,7 @@ A project which gets a github username to list all its public repositories.
 
 ## Architecture diagram and Folder Structure
 
-![Context](diagrams/githubList.drawio.png)
+![Architecture](diagrams/githubList.drawio.png)
 
 ### Pages
 
@@ -92,4 +92,8 @@ Run `npm run build` to build the project in production configuration.
 ### Running unit tests
 
 Run `npm run test` to execute the unit tests. Code coverage for the unit tests will get generated in  `coverage/github-repo-lister` directory
+
+### Sample Code Coverage
+
+![Code-Coverage](diagrams/code-coverage-sample.png)
 
